@@ -1,0 +1,236 @@
+#navbar
+{
+    background-color: #045ca4;
+   
+    
+    
+}
+.nav-item dropdown
+{
+    background-color:  #045ca4;
+}
+#navbar  ul li
+{
+     margin:5px;   
+}
+#navbar ul li a
+{
+    color:white;
+    background-color:  #045ca4;
+}
+#navbar img
+{
+    height:80px;
+    width:80px;
+}
+.icon
+{
+    height:100px;
+    width:100px;
+}
+#logincontainer
+{
+    margin:20px;
+}
+.text-line {
+    background-color: transparent;
+    color:blue;
+    outline: none;
+    outline-style: none;
+    outline-offset: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid grey 2px;
+    padding: 10px 70px;
+    
+}
+
+#password
+{
+    margin-left:-100px;
+}
+
+#login
+{
+    margin:15px;
+    margin-right: 0px;
+    border-radius: 2em;
+    margin-left:-20px;
+}
+#logincard
+{
+    height:350px;
+    width:350px;
+}
+#registercard
+{
+   
+    border-radius: 2em;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: rgba(0, 0, 0, 0.3) 10px 10px 10px;
+   
+   
+    
+}
+#addmovie
+{
+    margin-left:150px;
+    margin-top:15px;
+    
+}
+.carousel slide
+{
+    height:300px;
+}
+.movies1 {
+    position: relative;
+    margin-top: 0px;
+    width: 500px;
+    height: 400px;
+  }
+  .book img
+  {
+    border-radius: 50%;
+    margin-left:380px;
+    margin-bottom:500px;
+    margin-top:-130px;
+    opacity: 0;
+  transition: 0.3s;
+   
+  }
+  .book img:hover
+  {
+    
+    opacity: 1
+   
+
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.5s ease;
+  }
+ 
+  .movies1:hover .overlay {
+    display: block;
+    background: rgba(0, 0, 0, .3);
+  }
+  
+  #movies_image {
+    position: absolute;
+    width: 500px;
+    height: 200px;
+    left: 0;
+    transition: .5s ease;
+  backface-visibility: hidden;
+  }
+  .movies1:hover .movies_image {
+    opacity: 0.3;
+  }
+  
+  .title {
+    position: absolute;
+    width: 500px;
+    left: 0;
+    top: 120px;
+    font-weight: 700;
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    z-index: 1;
+    transition: top .2s ease;
+  }
+  
+  .movies1:hover .title {
+    top: 90px;
+  }
+  
+  .button {
+    position: absolute;
+    margin-right: 0px;
+    border-radius: 2em;
+    margin-left:-20px;
+    width: 300px;
+    
+    top: 180px;
+    text-align: center;
+    opacity: 0;
+   
+    
+    transition: opacity .2s ease;
+  }
+  
+  .button a {
+    width: 200px;
+    padding: 12px 48px;
+    text-align: center;
+    color: yellow;
+    border: solid 2px black;
+    z-index: 1;
+  }
+  
+  .movies1:hover .button {
+    opacity: 1;
+  }
+     
+
+/* for mobile device and tablet*/
+@media only screen AND (MAX-WIDTH:500px)
+{
+    
+    #logincontainer
+    {
+        margin:20px;
+    }
+    .text-line {
+        background-color: transparent;
+        color:blue;
+        outline: none;
+        outline-style: none;
+        outline-offset: 0;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: solid grey 2px;
+        padding: 10px 70px;
+        
+    }
+    
+    #password
+    {
+        margin:0px;
+        margin-left: 40px;
+    }
+    
+    #login
+    {
+        margin:15px;
+        margin-right: 0px;
+        border-radius: 2em;
+        margin-left:-20px;
+    }
+    #logincard
+    {
+        height:350px;
+        width:350px;
+    }
+    #registercard
+    {
+       
+        border-radius: 2em;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: rgba(0, 0, 0, 0.3) 10px 10px 10px;
+       height:400px;
+       
+    }
+    #addmovie
+{
+    margin-left:0px;
+
+}
+    }
