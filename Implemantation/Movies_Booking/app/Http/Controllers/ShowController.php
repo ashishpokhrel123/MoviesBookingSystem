@@ -1,9 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 use App\Show;
 
+
+
+
 use Illuminate\Http\Request;
+use App\Movie;
 
 
 
@@ -20,18 +25,45 @@ class ShowController extends Controller
     {
 
         
-        // return View('home')->with('shows',$shows);    
+        $movie=new Movie();
+        $movie=$movie->get();
+        return view('admin.addShow',[
+            'movie'=>$movie
+        ]);   
     }
 
 
-    public function showtime()
+    public function showtime($id)
     {
-        $shows= new Show();
-        $shows=$shows->get();
-        return view('customers.showtime',[
-            'shows'=>$shows
-        ]);
+       
+        //return view('category.index', compact(['categories', 'products']));
+        $shows = DB::table('shows')
+       ->join('movies', 'movies.mov_id', '=','shows.mov_id')   //*join query*/
+     ->select('shows.show_time','shows.show_date')
+       ->where('movies.mov_id',$id)
+       ->get();
+
+       $movie=  DB::table('movies')
+        ->select('movies.*')
+        ->where('mov_id', $id)
+        ->get();
+    
+        return view('customers.showtime', compact(['movie', 'shows']));
+      // ->offset(2)
+      // ->limit(2)
+
+      
+       /*echo "<pre>";
+       print_r($shows);
+       print_r($movie);
+       exit();*/
+
+     /*return view('customers.showtime')->with('shows','movie');*/
+            
+        
+       
     }
+   
     /**
      * Show the form for creating a new resource.
      *
@@ -39,12 +71,8 @@ class ShowController extends Controller
      */
     public function create()
     {
+        return view('admin.addShow');
         
-        $movie=new Movie();
-        $movie=$movie->get();
-        return view('admin.addShow',[
-            'movie'=>$movie
-        ]);
     }
 
     /**

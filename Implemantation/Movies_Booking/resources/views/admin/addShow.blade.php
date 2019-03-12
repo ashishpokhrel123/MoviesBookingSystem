@@ -24,20 +24,20 @@
 
                     @csrf
 
-                            <div class="form-group">
-                                    <label for="email">show date *</label>
-                                    <div class="input-group date" data-date-format="dd.mm.yyyy">
-                                            <input  type="text" class="form-control" placeholder="M d ,yyy" name="showdate">
-                                            <div class="input-group-addon" >
-                                              <span class="glyphicon glyphicon-th"></span>
-                                            </div>
-                                          </div>
-                                        <script type="text/javascript">
-                                        $('.input-group.date').datepicker({format: "M d ,yyyy"}); 
-                                        </script>
-                                       
-                                   
-                                </div>
+                    <div class="form-group">
+                            <label for="email">show date *</label>
+                            <div class="input-group date" data-date-format="dd.mm.yyyy">
+                                    <input  type="text" class="form-control" placeholder="M d ,yyy" name="showdate">
+                                    <div class="input-group-addon" >
+                                      <span class="glyphicon glyphicon-th"></span>
+                                    </div>
+                                  </div>
+                                <script type="text/javascript">
+                                $('.input-group.date').datepicker({format: "M d ,yyyy"}); 
+                                </script>
+                               
+                           
+                        </div>
                                
                                 <div class="form-group">
                                         <label for="email">show time *</label>
@@ -60,12 +60,12 @@
                                         <div class="input-group selectmovie">
                                         <select class="custom-select" id="inputGroupSelect01" name="movies">
                                                 <option >--Select Movie--</option>
-                                                @if($movie->count())
-                                                @foreach($movie as $key=>$movies)    
+                                               <!-- if($movie->count())  <!--$movie is object-->
+                                               @foreach($movie as $movies)   
                                             
                                             <option value="{{$movies->mov_id }}">{{ $movies->mov_title }}</option>
                                             @endforeach
-                                            @endif
+                                            
                                            
                                           </select>
                                     </div>

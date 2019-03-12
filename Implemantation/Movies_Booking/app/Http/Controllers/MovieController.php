@@ -1,8 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
+
 use App\Movie;
 use Illuminate\Http\Request;
+
+
 
 
 class MovieController extends Controller
@@ -27,19 +31,9 @@ class MovieController extends Controller
         
          
     }
-    public function showtime()
-    {
+   
 
-        $movie=new Movie();
-        $movie=$movie->get();
-        return view('customers.showtime',[
-            'movie'=>$movie
-        ]);
 
-        
-        
-         
-    }
      
     /**
      * Show the form for creating a new resource.
@@ -47,13 +41,47 @@ class MovieController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function showdetail()
+     public function showdetail($id)
      {
-        $movie=new Movie();
-        $movie=$movie->get();
+        $movie=  DB::table('movies')
+        ->select('movies.*')
+        ->where('mov_id', $id)
+        ->get();
+        
          return view('customers.details',[
             'movie'=>$movie
          ]);
+     }
+     
+     
+     public function showmovies($id)
+     {
+        $movie=  DB::table('movies')
+        ->select('movies.*')
+        ->where('mov_id', $id)
+        ->get();
+        
+         return view('customers.showtime')->with('showmovies',$movie);
+     }
+     public function showtime($id)
+     {
+         //$movie=Movie::all();
+         $shows = DB::table('shows')
+        ->join('movies', 'movies.mov_id', '=','shows.mov_id')   //*join query*/
+      ->select('shows.show_time')
+        ->where('movies.mov_id',$id)
+       // ->offset(2)
+       // ->limit(2)
+ 
+        ->get();
+       /* echo "<pre>";
+        print_r($shows);
+        exit();*/
+ 
+      return view('customers.showtime')->with('shows',$shows);
+             
+         
+        
      }
     public function create()
     {
@@ -98,6 +126,8 @@ class MovieController extends Controller
          $movie->mov_title=$request->movies_title;
          $movie->mov_director=$request->movies_director;
          $movie->mov_cast=$request->movies_cast;
+
+
 
          $movie->mov_type=implode(',',$request->movies_type);
          $movie->mov_lang=$request->movies_lang;

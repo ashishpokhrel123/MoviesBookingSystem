@@ -15,8 +15,8 @@ class CreateShowsTable extends Migration
     {
         Schema::create('shows', function (Blueprint $table) {
             $table->increments('show_id');
-            $table->date('show_date')->format('M d');
-            $table->time('show_time')->format('h:m');
+            $table->date('show_date');
+            $table->time('show_time');
             $table->integer('mov_id')->unsigned();
             $table->foreign('mov_id')->references('mov_id')->on('movies');
             $table->double('rate');

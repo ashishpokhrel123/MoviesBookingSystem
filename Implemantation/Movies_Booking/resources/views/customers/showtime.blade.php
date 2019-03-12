@@ -3,38 +3,39 @@
 
 @section('content')
 <div class="container">
-        <div class="moviesshow" style="height:500px;width:500px;">
-           
+  
+                <ul style="font-size:20px;">
+                    @if(!empty($movie))
+                        @forelse($movie as $movies)
+                        {{ $movies->mov_title}}<br/>
+                        {{ $movies->mov_duration}}
+                        <img src="{!! asset('uploads/movies/'.$movies->image) !!}" class="img-fluid img-thumbnail" id="movies_img"
+                  style="">
 
-               
-            @foreach($movie as $key=>$movies)
-           
-            @if($movies->image)
-            <img src="{!! asset('uploads/movies/'.$movies->image) !!}" class="img-fluid img-thumbnail" id="movies_image"
-            style="height:200px;width:200px">
-        @else
-            <span class="badge badge-danger">  No Image Found </span>
-        </div>
-        <div class="clearfix"></div>
+                        @empty
+                            <li>No data found</li>
+                        @endforelse
+                    @endif
+                </ul>
+            </li>
+          <div class="st" style="margin:80px">
+            <hr>
+         
+                    <legend><center><h1>Showtime</h1></center></legend>
+                    <hr>
 
-        <div class="movinfo" style=height:200px;width:200px;"">
-            {{$movies->mov_title}}
-        </div>
-            
-        
-        </div>
-        <div class="showdetails">
+
+                    @foreach($shows as $key=>$sh)
+                   
+                    
                 
-                @foreach($shows as $show)
-                       {{$show->show_date}}
+                    <div class="time" style=" border:1px solid red;float:left;margin-left:20px;border-radius:2em">
+                        
+                    <a href="{{'/seat'}}">{{ $sh->show_time}}
+                                
+                    </div>
                 @endforeach
-                @endif
-        @endforeach
-      
                 
-
-        </div>
-    
-</div>
+ </div>
 
 @endsection

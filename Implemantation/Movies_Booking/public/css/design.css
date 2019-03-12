@@ -83,26 +83,25 @@
 {
     height:300px;
 }
-.movies1 {
+.movies {
     position: relative;
     margin-top: 0px;
     width: 500px;
     height: 400px;
+    float:left;
+   /* margin-left:200px;*/
+    
   }
-  .book img
+ 
+  .book img:hover
   {
+    
     border-radius: 50%;
     margin-left:380px;
     margin-bottom:500px;
     margin-top:-130px;
-    opacity: 0;
-  transition: 0.3s;
-   
-  }
-  .book img:hover
-  {
-    
-    opacity: 1
+    /*opacity: 0;*/
+    transition: 0.3s;
    
 
   }
@@ -115,7 +114,7 @@
     transition: background 0.5s ease;
   }
  
-  .movies1:hover .overlay {
+  .movies:hover .overlay {
     display: block;
     background: rgba(0, 0, 0, .3);
   }
@@ -128,25 +127,30 @@
     transition: .5s ease;
   backface-visibility: hidden;
   }
-  .movies1:hover .movies_image {
+  #movies_img
+  {
+    height:100px;
+    width:100px;
+    float:right;
+    margin-top:-50px;
+  }
+  .movies:hover .movies_image {
     opacity: 0.3;
   }
   
   .title {
-    position: absolute;
-    width: 500px;
-    left: 0;
-    top: 120px;
-    font-weight: 700;
-    font-size: 30px;
-    text-align: center;
-    text-transform: uppercase;
-    color: white;
-    z-index: 1;
-    transition: top .2s ease;
+ 
+    margin-top: 320px;
+    /*font-weight: 700;*/
+    font-size: 20px;
+    margin-left:50px;
+  
+    /*text-transform: uppercase;*/
+    color:red;
+ 
   }
   
-  .movies1:hover .title {
+  .movies:hover .title {
     top: 90px;
   }
   
@@ -174,11 +178,70 @@
     z-index: 1;
   }
   
-  .movies1:hover .button {
+  .movies:hover .button {
     opacity: 1;
   }
-     
+    
+  #holder{
+    height:500px;
+    width:900px;
+    background-color:none;
+  /*  border:1px solid #A4A4A4;
+    border-radius: 5%;*/
+    margin-left:10px;
+    }
+    #seatname
+    {
+      height:10px;
+      width:10px;
+    }
+    #place {
+    position:relative;
+    margin:100px;
+    }
+    #place a{
+    font-size:0.6em;
+    /*display: none;*/
+    margin-radius:20%;
+    }
+    #place li
+    {
+     /*list-style: none outside none;*/
+     position: absolute;
+     margin:10px;
+     margin-radius:20%;
+    }
+    #place li:hover
+    {
+    background-color:yellow;
+    }
+    #place .seat{
+    background-color:white;
+    height:33px;
+    width:33px;
+    display:block;
+    }
+    #place .selectedSeat
+    {
+    background-color: red;
+    }
+    #place .selectingSeat
+    {
+    background-color:yellow;
+    }
+    
+    #place .row-3, #place .row-4{
+    margin-top:10px;
+    }
+    #seatDescription li{
+    verticle-align:middle;
+    list-style: none outside none;
+    padding-left:35px;
+    height:35px;
+    float:left;
+    }
 
+    
 /* for mobile device and tablet*/
 @media only screen AND (MAX-WIDTH:500px)
 {
