@@ -305,6 +305,13 @@
                                       <i class="fa fa-angle-left pull-right"></i>
                                     </a>
                                 </li>
+                                <li class="treeview">
+                                  <a href="{{url('/viewmovie')}}">
+                                    <i class="fa fa-film" aria-hidden="true"></i>
+                                    <span>Update Movie</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                  </a>
+                              </li>
                             </li>
                         </li>
                     </li>

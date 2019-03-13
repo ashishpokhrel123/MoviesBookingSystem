@@ -158,9 +158,17 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function viewmovie()
+    {
+        $movie=new Movie();
+        $movie=$movie->get();
+        return view('admin.viewmovie',[
+            'movie'=>$movie
+        ]);
+    }
     public function edit($id)
     {
-        //
+        return view('admin.editmovie');
     }
 
     /**

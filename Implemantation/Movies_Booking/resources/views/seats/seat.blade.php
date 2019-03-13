@@ -2,10 +2,8 @@
 @section('title')seat @endsection
 
 @section('content')
-<div class="seatinfo" style="margin:10px;">
-        <h1<No of seat</h1>  <input type="text" id="inc" value="0" style="height:30px;width:70px;"></input>
-        </div>
-          <div id="holder">
+                <h1>Hello</h1>
+          <div id="holders">
       
               <ul  id="place" onclick="Click();remove();">
       

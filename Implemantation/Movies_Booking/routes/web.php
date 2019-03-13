@@ -19,6 +19,9 @@ Route::group(['middleware'=>'admin'],function(){
     Route::get('/addShow','ShowController@index');
     Route::get('/addShow','ShowController@create');
     Route::post('/addShow','ShowController@store');
+    Route::get('/viewmovie','MovieController@viewmovie');
+    Route::get('/editmovie/{id}','MovieController@edit');
+    Route::put('/editmovie/{id}','MovieController@movieupdate');
    
     ///Route::post('/addshow','ShowController@store');
 });
@@ -37,3 +40,4 @@ Route::get('/home','MovieController@index');
 Route::get('/showtime/{id}','ShowController@showtime');
 
 Route::get('/seat','SeatController@seat');
+Route::get('/seat/{id}','ShowController@showrate');

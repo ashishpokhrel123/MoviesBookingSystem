@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     
-    <form class="well form-horizontal" action="{!! url('/addmovie') !!}" method="POST" enctype="multipart/form-data" id="addmovie">
+    <form class="well form-horizontal" action="{!! url('/editmovie',$movies->mov_id) !!}" method="POST" enctype="multipart/form-data" id="addmovie">
                         @if(session()->has('success'))
                         <div class="alert-success">
                             <h1> {!! session()->get('success') !!}</h1>
@@ -25,7 +25,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="email">Movie Title *</label>
-                        <input type="text" class="form-control" placeholder="Enter Movie Title" name="movies_title">
+                    <input type="text" class="form-control" placeholder="Enter Movie Title" name="movies_title" value="{!!($movies->mov_title)!!}">
                     </div>
                     <div class="form-group">
                             <label for="email">Director *</label>
