@@ -5,11 +5,21 @@
 <div class="seat">
 <div class="seatinfo" style="margin-left:100px;">
     No of Seat: <p> <input type="text" id="totseat" value="0" style="height:30px;width:70px;"></input></p>
-    Total price:  <p><input type="text" id="totprice" value="0" style="height:30px;width:70px;float:left"></input></p>
+    Total price:  <p><input type="text" name="" id="totprice" value="0" style="height:30px;width:70px;float:left"></input></p>
+    <button id='btn' class="btn btn-primary"value="Refresh Page" onClick="window.location.reload()">Reset Seat</button>
     </div>
       <div id="holder">
   
-          <ul  id="place" onclick="Click()" ondblclick="doubleclick()">
+          <ul  id="place">
+              
+<script>
+        //validation username  using Jquery
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script> 
+        
+ 
+
+
+                    </script>
           
   
   
@@ -82,18 +92,40 @@
   });
   
   var count = 0;
-   var countEl = document.getElementById("totseat");
-   function Click(){
-       count++;
-       countEl.value = count;
-  
-   }
+  var countEl = document.getElementById("totseat");
 
+
+
+  $("#place .seat").dblclick( "click", function( event ) {
+      
    
+   
+    count++
+   countEl.value=count;
   
+
   
+
+    
   
+});
+$("#place .seat").one( "click", function( event ) {
+      
+   
+   
+      count--
+     countEl.value=count;
+    
   
+    
+  
+      
+    
+  });
+  
+
+
+
    
   
   
@@ -117,8 +149,15 @@
       alert(str.join(','));
   });
  
+
   
-             </script>
+
+
+ 
+
+  
+          
+                </script>
              </div>
 @endsection
 

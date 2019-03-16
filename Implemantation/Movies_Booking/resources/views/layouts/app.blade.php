@@ -14,7 +14,9 @@
         </style>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/jquery-3.3.1.min.js') }}" defer></script>
+    <script src="{{ asset('js/jquery.js') }}" defer></script>
+
+
    
 
     <!-- Fonts -->

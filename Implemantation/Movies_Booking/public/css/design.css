@@ -189,7 +189,7 @@
   /*  border:1px solid #A4A4A4;
     border-radius: 5%;*/
     margin-left:10px;
-    margin-top:-30px;
+    margin-top:-50px;
     }
     #seatname
     {
@@ -236,7 +236,7 @@
     }
     #seatDescription
     {
-        margin-top:30px;
+       
     }
     .Available
     {
@@ -289,6 +289,12 @@
     width:100px;
     margin-left:40px;
     
+   }
+   #btn
+   {
+       margin-left:20px;
+       margin-top:-20px;
+       background: green;
    }
     
 /* for mobile device and tablet*/

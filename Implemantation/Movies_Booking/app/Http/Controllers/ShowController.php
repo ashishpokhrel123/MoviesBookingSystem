@@ -63,15 +63,24 @@ class ShowController extends Controller
         
        
     }
-   public function showrate($id)
-   {
-    $shows = DB::table('shows')
-    ->join('movies', 'movies.mov_id', '=','shows.mov_id')   //*join query*/
-  ->select('shows.show_time','shows.show_date','rate')
-    ->where('movies.mov_id',$id)
-    ->get();
-    return view ('customers.chooseseat')->with('shows',$shows);
-   }
+  
+    public function showrate(Request $request)
+    {
+    if($request->ajax())
+    {
+    
+   
+
+    }
+   // return Response($shows);
+   echo "<pre>";
+   print_r('$shows');
+   exit();
+}
+
+    
+       
+   
     /**
      * Show the form for creating a new resource.
      *

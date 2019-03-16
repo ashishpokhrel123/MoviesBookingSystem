@@ -70,13 +70,10 @@ class MovieController extends Controller
         ->join('movies', 'movies.mov_id', '=','shows.mov_id')   //*join query*/
       ->select('shows.show_time')
         ->where('movies.mov_id',$id)
-       // ->offset(2)
-       // ->limit(2)
+
  
         ->get();
-       /* echo "<pre>";
-        print_r($shows);
-        exit();*/
+     
  
       return view('customers.showtime')->with('shows',$shows);
              
@@ -168,7 +165,15 @@ class MovieController extends Controller
     }
     public function edit($id)
     {
-        return view('admin.editmovie');
+        $movie=Movie::find($id);
+        if(!$movie)
+        {
+            return indirect()->back();
+        }
+
+        return view('admin.editmovie',[
+            'movies'=>$movie
+        ]);
     }
 
     /**

@@ -2,7 +2,7 @@
 @section('title')Admin-Home @endsection
 @section('content')
 <div class="container">
-    <div class="movielist">
+    <div class="movielist" style="margin-left:150px;">
     <h2>List of all movies</h2>
 
     @if(session()->has('success'))
@@ -42,7 +42,7 @@
                     <td>
                         @if($movies->image)
                         <img src="{!! asset('uploads/movies/'.$movies->image) !!}" class="img-fluid img-thumbnail"
-                        style="max-width: 20%">
+                        style="height:100px;width:100px;">
                     @else
                         <span class="badge badge-danger">  No Image Found </span>
                     @endif
@@ -52,7 +52,7 @@
                    
 
                   
-                    <td>
+                    <td style="float:left;">
                         <a href="{!! url('/editmovie',$movies->mov_id) !!}" type="button" class="btn btn-primary btn-sm">Edit</a>
                         <form action="{!! url('deletemovie',[$movies->id]) !!}" method="POST">
                             @csrf

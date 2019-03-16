@@ -40,4 +40,6 @@ Route::get('/home','MovieController@index');
 Route::get('/showtime/{id}','ShowController@showtime');
 
 Route::get('/seat','SeatController@seat');
-Route::get('/seat/{id}','ShowController@showrate');
+//Route::get('/seat','ShowController@search');
+
+Route::get('/chooseseat','ShowController@showrate');
