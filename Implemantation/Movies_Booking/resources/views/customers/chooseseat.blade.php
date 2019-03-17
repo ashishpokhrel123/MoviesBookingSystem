@@ -3,11 +3,13 @@
 
 @section('content')
 <div class="seat">
-<div class="seatinfo" style="margin-left:100px;">
-    No of Seat: <p> <input type="text" id="totseat" value="0" style="height:30px;width:70px;"></input></p>
-    Total price:  <p><input type="text" name="" id="totprice" value="0" style="height:30px;width:70px;float:left"></input></p>
+<div class="seatinfo" style="margin-left:80px; margin-top:-10px;">
+    <p> No of Seat:  <input type="text" id="totseat" minimum="0" value="0" style="height:30px;width:70px;"></input></p>
+    <p style="margin-left:300px;margin-top:-40px;">Total price:  <input type="text" name="totprice" id="totprice" value="0" style="height:30px;width:70px;"></input></p>
+    <p style="margin-left:500px;margin-top:-60px;">Selected Seat:<textarea name="seats" style="height:40px;width:200px;margin-left:20px;"></textarea>
     <button id='btn' class="btn btn-primary"value="Refresh Page" onClick="window.location.reload()">Reset Seat</button>
     </div>
+  
       <div id="holder">
   
           <ul  id="place">
@@ -36,8 +38,9 @@
       </ul>
       </div>
           <div style="clear:both;width:100%">
-          <input type="text" id="btnShowNew" value="Show Selected Seats" />
+          <input type="button" id="btnShowNew" value="Show Selected Seats" />
           <input type="button" id="btnShow" value="Show All" />
+          <div class="bookseat"><a href="">Book Seat</a></div>
           </div>
           <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript">
           </script>
@@ -86,56 +89,73 @@
   if ($(this).hasClass(settings.selectedSeatCss)){
       alert('This seat is already reserved');
   }
+  
+  
   else{
       $(this).toggleClass(settings.selectingSeatCss);
+ 
       }
   });
   
   var count = 0;
   var countEl = document.getElementById("totseat");
+  var price= document.getElementById("totprice");
 
 
 
-  $("#place .seat").dblclick( "click", function( event ) {
-      
-   
-   
-    count++
-   countEl.value=count;
-  
-
-  
-
-    
-  
-});
 $("#place .seat").one( "click", function( event ) {
-      
    
+ 
+    count++
+    countEl.value=count;
+    $(this).css("background-color","yellow");
+    
+    
+
+					
+					$.ajax({
+						type:"GET",
+						url:'/chooseseat',
+						data:{"totprice":price},
+						success: function(result){
+							$("#totprice").html(result);
+						}
+					});
+				
+    
+
+
+
+
+        
+  });
+  
+  $("#place .seat").dblclick( "click", function( event ) {
    
-      count--
-     countEl.value=count;
-    
   
-    
+     
+    var count2 = document.getElementById("totseat");
+  var countEl = document.getElementById("totseat");
+
+   
+    count--
+  countEl.value=count;
+  $(this).css("background-color","");
+   
+
+
+
   
-      
-    
+
+   
+  
   });
   
 
-
-
-   
-  
-  
-  
-  
-  
   $('#btnShow').click(function () {
       var str = [];
       $.each($('#place li.' + settings.selectedSeatCss + ' a, #place li.'+ settings.selectingSeatCss + ' a'), function (index, value) {
-          str.push($(this).attr('title'));
+         document.getElementById("seatnumber") =str.push($(this).attr('title'));
       });
       alert(str.join(','));
   })

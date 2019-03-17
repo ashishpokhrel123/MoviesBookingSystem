@@ -42,4 +42,6 @@ Route::get('/showtime/{id}','ShowController@showtime');
 Route::get('/seat','SeatController@seat');
 //Route::get('/seat','ShowController@search');
 
-Route::get('/chooseseat','ShowController@showrate');
+
+
+Route::get('/chooseseat', 'IndexController@readRate');

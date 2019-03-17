@@ -228,7 +228,7 @@
     }
     #place .selectingSeat
     {
-    background-color:yellow;
+  
     }
     
     #place .row-3, #place .row-4{
@@ -294,9 +294,25 @@
    {
        margin-left:20px;
        margin-top:-20px;
-       background: green;
+       
    }
-    
+   .bookseat
+   {
+        margin: 20px;
+       height: 20px;
+       width:80px;
+       border: 1px solid red;
+  
+       margin-top: -200px;
+      margin-left:600px;
+   }
+    .bookseat a
+    {
+        text-align: center;
+        text-decoration: none;
+        margin-left:5px;
+
+    }
 /* for mobile device and tablet*/
 @media only screen AND (MAX-WIDTH:500px)
 {

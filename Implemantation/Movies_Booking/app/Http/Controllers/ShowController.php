@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Show;
-
-
-
-
 use Illuminate\Http\Request;
 use App\Movie;
+use Response;
 
 
 
@@ -64,20 +61,15 @@ class ShowController extends Controller
        
     }
   
-    public function showrate(Request $request)
+    public function readRate(Request $req)
     {
-    if($request->ajax())
-    {
-    
-   
+        $shows = DB::table('shows')
+        ->select('shows.rate')
+        ->get();
+        return response()->json($data);
+   // return Response($shows);
 
     }
-   // return Response($shows);
-   echo "<pre>";
-   print_r('$shows');
-   exit();
-}
-
     
        
    
