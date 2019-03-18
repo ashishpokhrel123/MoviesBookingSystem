@@ -32,9 +32,9 @@
                                       <span class="glyphicon glyphicon-th"></span>
                                     </div>
                                   </div>
-                                <script type="text/javascript">
-                                $('.input-group.date').datepicker({format: "M d ,yyyy"}); 
-                                </script>
+                                  <script type="text/javascript">
+                                    $('.input-group.date').datepicker({format: "M d ,yyyy"}); 
+                                    </script>
                                
                            
                         </div>

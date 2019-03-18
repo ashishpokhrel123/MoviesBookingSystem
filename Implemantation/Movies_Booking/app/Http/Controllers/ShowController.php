@@ -21,19 +21,14 @@ class ShowController extends Controller
     public function index()
     {
 
-        
-        $movie=new Movie();
-        $movie=$movie->get();
-        return view('admin.addShow',[
-            'movie'=>$movie
-        ]);   
+    
     }
 
 
     public function showtime($id)
     {
        
-        //return view('category.index', compact(['categories', 'products']));
+      
         $shows = DB::table('shows')
        ->join('movies', 'movies.mov_id', '=','shows.mov_id')   //*join query*/
      ->select('shows.show_time','shows.show_date','rate')
@@ -61,12 +56,13 @@ class ShowController extends Controller
        
     }
   
-    public function readRate(Request $req)
+    public function readRate()
     {
         $shows = DB::table('shows')
         ->select('shows.rate')
         ->get();
-        return response()->json($data);
+   
+       return view('customers.chooseseat', compact([ 'shows']));
    // return Response($shows);
 
     }
@@ -80,7 +76,14 @@ class ShowController extends Controller
      */
     public function create()
     {
-        return view('admin.addShow');
+
+      
+        
+        $movie=new Movie();
+        $movie=$movie->get();
+        return view('admin.addShow',[
+            'movie'=>$movie
+        ]);
         
     }
 

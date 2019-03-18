@@ -9,14 +9,19 @@
     <p style="margin-left:500px;margin-top:-60px;">Selected Seat:<textarea name="seats" style="height:40px;width:200px;margin-left:20px;"></textarea>
     <button id='btn' class="btn btn-primary"value="Refresh Page" onClick="window.location.reload()">Reset Seat</button>
     </div>
+    <div class="scc">
+       
+    </div>
   
       <div id="holder">
+            
   
           <ul  id="place">
               
 <script>
         //validation username  using Jquery
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script> 
+        
         
  
 
@@ -102,69 +107,47 @@
   var price= document.getElementById("totprice");
 
 
+/* for selection seat on single click*/
 
 $("#place .seat").one( "click", function( event ) {
    
- 
-    count++
+        count++
     countEl.value=count;
-    $(this).css("background-color","yellow");
+    price.value=count*300;
+    $(this).css("background-color","yellow");	
     
-    
-
-					
-					$.ajax({
-						type:"GET",
-						url:'/chooseseat',
-						data:{"totprice":price},
-						success: function(result){
-							$("#totprice").html(result);
-						}
-					});
-				
-    
-
-
-
-
-        
+ 		      
   });
-  
-  $("#place .seat").dblclick( "click", function( event ) {
-   
-  
-     
-    var count2 = document.getElementById("totseat");
-  var countEl = document.getElementById("totseat");
 
-   
-    count--
+
+    $("#place .seat").dblclick( "click", function( event ) {
+
+var count2 = document.getElementById("totseat");
+var countEl = document.getElementById("totseat");
+var price= document.getElementById("totprice");
+  count--
   countEl.value=count;
-  $(this).css("background-color","");
-   
-
+ price.value=count*300;
+$(this).css("background-color","");
+});
 
 
   
-
-   
-  
-  });
-  
-
+  var seats= document.getElementById("seats");
   $('#btnShow').click(function () {
       var str = [];
       $.each($('#place li.' + settings.selectedSeatCss + ' a, #place li.'+ settings.selectingSeatCss + ' a'), function (index, value) {
          document.getElementById("seatnumber") =str.push($(this).attr('title'));
       });
-      alert(str.join(','));
+     
   })
-  
+  var seats= document.getElementById("seats");
   $('#btnShowNew').click(function () {
       var str = [], item;
       $.each($('#place li.' + settings.selectingSeatCss + ' a'), function (index, value) {
           item = $(this).attr('title');
           str.push(item);
+        
       });
       alert(str.join(','));
   });

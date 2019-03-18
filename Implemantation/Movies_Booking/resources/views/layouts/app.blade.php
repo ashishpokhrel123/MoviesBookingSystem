@@ -14,7 +14,10 @@
         </style>
 
     <!-- Scripts -->
+    
+    
     <script src="{{ asset('js/jquery.js') }}" defer></script>
+
 
 
    
