@@ -236,7 +236,7 @@
     }
     #seatDescription
     {
-       
+       margin-top:-100px;
     }
     .Available
     {
@@ -296,23 +296,22 @@
        margin-top:-20px;
        
    }
-   .bookseat
-   {
-        margin: 20px;
-       height: 20px;
-       width:80px;
-       border: 1px solid red;
-  
-       margin-top: -200px;
-      margin-left:600px;
-   }
-    .bookseat a
-    {
-        text-align: center;
-        text-decoration: none;
-        margin-left:5px;
+   
+.reserve
+   {  
+       
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+     border-radius: 50%;
+       
 
-    }
+   }
+
 /* for mobile device and tablet*/
 @media only screen AND (MAX-WIDTH:500px)
 {

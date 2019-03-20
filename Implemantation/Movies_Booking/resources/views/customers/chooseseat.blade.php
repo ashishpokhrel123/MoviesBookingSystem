@@ -6,8 +6,12 @@
 <div class="seatinfo" style="margin-left:80px; margin-top:-10px;">
     <p> No of Seat:  <input type="text" id="totseat" minimum="0" value="0" style="height:30px;width:70px;"></input></p>
     <p style="margin-left:300px;margin-top:-40px;">Total price:  <input type="text" name="totprice" id="totprice" value="0" style="height:30px;width:70px;"></input></p>
-    <p style="margin-left:500px;margin-top:-60px;">Selected Seat:<textarea name="seats" style="height:40px;width:200px;margin-left:20px;"></textarea>
+    <p style="margin-left:500px;margin-top:-60px;">Selected Seat:<textarea name="seats" id="selectseat" style="height:40px;width:200px;margin-left:20px;"></textarea>
     <button id='btn' class="btn btn-primary"value="Refresh Page" onClick="window.location.reload()">Reset Seat</button>
+    
+    @foreach($scr as  $screen)
+    <p style="color:red"> <label>Screen</label>:{{$screen->screen_type}}</p>
+    @endforeach
     </div>
     <div class="scc">
        
@@ -30,10 +34,11 @@
           
   
   
-  
+         
           </ul>
-  
+       
       </div>
+  
       <div style="float:left;">
       <ul id="seatDescription">
   
@@ -43,9 +48,9 @@
       </ul>
       </div>
           <div style="clear:both;width:100%">
-          <input type="button" id="btnShowNew" value="Show Selected Seats" />
-          <input type="button" id="btnShow" value="Show All" />
-          <div class="bookseat"><a href="">Book Seat</a></div>
+        
+          <legend><center> <input type="submit" value="Reserve" class="btn btn btn-primary" id="reserve"></center></legend>
+        
           </div>
           <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript">
           </script>
@@ -142,15 +147,27 @@ $(this).css("background-color","");
      
   })
   var seats= document.getElementById("seats");
-  $('#btnShowNew').click(function () {
+  $("#place .seat").one( "click", function( event ) {
       var str = [], item;
       $.each($('#place li.' + settings.selectingSeatCss + ' a'), function (index, value) {
           item = $(this).attr('title');
           str.push(item);
         
       });
-      alert(str.join(','));
+      $( "#selectseat" ).html( str.join(',') );
+    
   });
+  $("#place .seat").dblclick( "click", function( event ) {
+      var str = [], item;
+      $.each($('#place li.' + settings.selectingSeatCss + ' a'), function (index, value) {
+          item = $(this).attr('title');
+          str.push(item);
+        
+      });
+      $( "#selectseat" ).html( str.join(',') );
+    
+  });
+ 
  
 
   

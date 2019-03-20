@@ -14,6 +14,7 @@ class CreateHallTable extends Migration
     public function up()
     {
         Schema::create('hall', function (Blueprint $table) {
+            $table->increments('hall_id');
             $table->integer('show_id')->unsigned();
             $table->foreign('show_id')->references('show_id')->on('shows');
             $table->integer('screen_id')->unsigned();

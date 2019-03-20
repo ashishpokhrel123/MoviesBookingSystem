@@ -21,7 +21,7 @@ class CreateBookingTable extends Migration
             $table->foreign('mov_id')->references('mov_id')->on('movies');
             $table->integer('show_id')->unsigned();
             $table->foreign('show_id')->references('show_id')->on('shows');
-            $table->integer('qty');
+            $table->string('book_seats');
             $table->timestamps();
         });
     }

@@ -14,9 +14,8 @@
         </style>
 
     <!-- Scripts -->
-    
-    
-    <script src="{{ asset('js/jquery.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/jquery.js') }}"></script>
 
 
 

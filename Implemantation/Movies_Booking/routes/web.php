@@ -9,7 +9,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/','MovieController@index');
+
+   Route::get('/','MovieController@index');
+   Route::get('/home','MovieController@index');
+
 /*Auth for user*/
 Auth::routes();
 Route::group(['middleware'=>'admin'],function(){
@@ -22,24 +25,27 @@ Route::group(['middleware'=>'admin'],function(){
     Route::get('/viewmovie','MovieController@viewmovie');
     Route::get('/editmovie/{id}','MovieController@edit');
     Route::put('/editmovie/{id}','MovieController@movieupdate');
+    Route::get('/addscreen','ScreenController@create');
+    Route::post('/addscreen','ScreenController@store');
+    Route::get('/addhall','HallController@create');
+    Route::get('/addhall','ScreenController@show');
+  
+    Route::post('/addhall','HallController@store');
    
     ///Route::post('/addshow','ShowController@store');
 });
 //Route::get('/home','ShowController@index');
-Route::get('/showtime/{id}','MovieController@showmovies');
-Route::get('/','MovieController@index');
 
-Route::get('/moviedetail/{id}','MovieController@showdetail');
-Route::get('/editprofile/{id}', 'ProfileController@profile');//display
-Route::put('/editprofile/{id}','ProfileController@profileupdate');//update
-/*Auth for admin */
-Route::get('/addmovis','AdminController@addmovie');
-Route::get('/home','MovieController@index');
+  Route::get('/showtime/{id}','MovieController@showmovies');
+  Route::get('/','MovieController@index');
+  Route::get('/moviedetail/{id}','MovieController@showdetail');
+  Route::get('/editprofile/{id}', 'ProfileController@profile');//display
+  Route::put('/editprofile/{id}','ProfileController@profileupdate');//update
+  Route::get('/addmovis','AdminController@addmovie');
+
 //Route::get('/showtime/{id}','MovieController@showtime');
-
-Route::get('/showtime/{id}','ShowController@showtime');
-
-Route::get('/seat','SeatController@seat');
+   Route::get('/showtime/{id}','ShowController@showtime');
+    Route::get('/seat/{id}','SeatController@seat');
 //Route::get('/seat','ShowController@search');
-Route::get('/seat','ShowController@readRate');
+  Route::get('/seat','ShowController@readRate');
 

@@ -14,7 +14,8 @@ class CreateSeatTable extends Migration
     public function up()
     {
         Schema::create('seat', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('seat_id');
+            $table->integer('seat_no');
             $table->timestamps();
         });
     }

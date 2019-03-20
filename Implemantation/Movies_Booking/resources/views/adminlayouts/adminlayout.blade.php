@@ -287,11 +287,17 @@
                           <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <li class="treeview">
-                            <a href="#">
+                        <a href="{{url('/addscreen')}}">
                               <i class="fas fa-desktop"></i>
                               <span>Add Screen</span>
                               <i class="fa fa-angle-left pull-right"></i>
                             </a>
+                            <li class="treeview">
+                              <a href="{{url('/addhall')}}">
+                                    <i class="fas fa-desktop"></i>
+                                    <span>Add hall</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                  </a>
                             <li class="treeview">
                                 <a href="#">
                                   <i class="fas fa-ticket-alt"></i>
@@ -315,6 +321,7 @@
                             </li>
                         </li>
                     </li>
+                </li>
                 </li>
             </ul>
 

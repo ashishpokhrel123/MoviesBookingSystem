@@ -31,7 +31,7 @@ class ShowController extends Controller
       
         $shows = DB::table('shows')
        ->join('movies', 'movies.mov_id', '=','shows.mov_id')   //*join query*/
-     ->select('shows.show_time','shows.show_date','rate')
+     ->select('shows.show_time','shows.show_date','rate','shows.show_id')
        ->where('movies.mov_id',$id)
        ->get();
 
@@ -67,7 +67,11 @@ class ShowController extends Controller
 
     }
     
-       
+     public function showid()  
+     {
+        
+         
+     }
    
     /**
      * Show the form for creating a new resource.
