@@ -2,21 +2,42 @@
 @section('title')seat @endsection
 
 @section('content')
+<form class="well form-horizontal" action="{!! url('/seat') !!}" method="POST" enctype="multipart/form-data" id="chseat">
+    @csrf
+  
+<input type="text" name="show_id" value="{{request()->route('id')}}" hidden/>
+<input type="text" name="user_id" value="{!!(Auth::user()->id)!!}" hidden/>
+<input type="text" name="mov_id" value="{{request()->route('mov_id')}}" hidden/>
+    
+
+
+
 <div class="seat">
 <div class="seatinfo" style="margin-left:80px; margin-top:-10px;">
-    <p> No of Seat:  <input type="text" id="totseat" minimum="0" value="0" style="height:30px;width:70px;"></input></p>
+    
+       
+        @foreach($hall as  $ha)
+                                            
+        <input value="{{$ha->screen_type }}" name="screentype"/>
+        @endforeach
+       
+    
+        
+     
+        
+    <p> No of Seat:  <input type="text" id="totseat" name="totseat" value="0" style="height:30px;width:70px;"></input></p>
     <p style="margin-left:300px;margin-top:-40px;">Total price:  <input type="text" name="totprice" id="totprice" value="0" style="height:30px;width:70px;"></input></p>
     <p style="margin-left:500px;margin-top:-60px;">Selected Seat:<textarea name="seats" id="selectseat" style="height:40px;width:200px;margin-left:20px;"></textarea>
     <button id='btn' class="btn btn-primary"value="Refresh Page" onClick="window.location.reload()">Reset Seat</button>
+
     
-    @foreach($scr as  $screen)
-    <p style="color:red"> <label>Screen</label>:{{$screen->screen_type}}</p>
-    @endforeach
+ 
     </div>
     <div class="scc">
        
     </div>
   
+
       <div id="holder">
             
   
@@ -178,6 +199,7 @@ $(this).css("background-color","");
   
           
                 </script>
+                </form>
              </div>
 @endsection
 

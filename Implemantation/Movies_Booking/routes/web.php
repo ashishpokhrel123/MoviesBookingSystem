@@ -45,7 +45,8 @@ Route::group(['middleware'=>'admin'],function(){
 
 //Route::get('/showtime/{id}','MovieController@showtime');
    Route::get('/showtime/{id}','ShowController@showtime');
-    Route::get('/seat/{id}','SeatController@seat');
+    Route::get('/seat/{id}/{mov_id}','HallController@seat');
 //Route::get('/seat','ShowController@search');
   Route::get('/seat','ShowController@readRate');
+  Route::post('/seat','SeatController@store');
 

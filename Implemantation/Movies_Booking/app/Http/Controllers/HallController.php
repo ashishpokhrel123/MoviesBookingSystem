@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
 use App\Hall;
+use  App\Screen;
+use Illuminate\Http\Request;
+
+use Auth;
+use DB;
 
 class HallController extends Controller
 {
@@ -11,7 +14,25 @@ class HallController extends Controller
     {
         return view('admin.addhall');
     }
+    public function seat($id)
+    {
+        if(Auth::check())
+        {
+            $hall=DB::table('hall')
+            ->join('screen', 'screen.screen_id', '=','hall.screen_id')   //*join query*/
+         ->select('screen.screen_type')
+           ->where('hall.show_id',$id)
+           ->get();
+            return view('customers.chooseseat',['hall' => $hall]);
+        }
+      
+        else
+        {
+                  return view('auth.login');
+        }
 
+   
+    }
     public function store(Request $request)
     {
         $this->validate(request(),[

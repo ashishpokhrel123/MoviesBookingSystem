@@ -1,23 +1,34 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
 use App\Hall;
+use App\Screen;
 use DB;
+use App\Booking;
+use Auth;
+use Illuminate\Http\Request;
+
+
 
 class SeatController extends Controller
 {
-    public function seat($id)
+   
+    public function store(Request $request)
     {
-
-        $scr=DB::table('hall')
-        ->join('screen', 'screen.screen_id', '=','hall.screen_id')   //*join query*/
-     ->select('screen.screen_type')
-       ->where('hall.show_id',$id)
-       ->get();
-
-
-        return view('customers.chooseseat', compact([ 'scr']));
+        $this->validate(request(),[
+            'totseat'=>'required',
+            'totprice'=>'required',
+            'seats'=>'required',
+        ]);
+        
+        $book=new Booking();
+        $book->user_id=$request->user_id;
+        $book->mov_id=$request->mov_id;
+        $book->show_id=$request->show_id;
+        $book->screen=$request->screentype;
+        $book->book_seats=$request->seats;
+        $book->totprice	=$request->totprice;
+        $book->save();
+        return redirect()->to('/seat')->with('success','SeatBooking Is confirm');
     }
 }
