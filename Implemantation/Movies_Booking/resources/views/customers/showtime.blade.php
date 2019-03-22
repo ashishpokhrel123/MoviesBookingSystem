@@ -18,78 +18,59 @@
             </li>
           <div class="st" style="margin:80px">
             <hr>
+            <button class="commentbtn btn btn-primary" data-rel="button" >{!! date("d M")!!}</button>  
+           
+                <script>
+                 $(".commentbtn").on("click", function(e) {
+                e.preventDefault(); // in some browsers a button submits if no type=
+                $("div.commenttod").show();
+                $("div.commenttom,div.commenttomnext").hide();
+  });
+                  </script>
+           
+           <button class="commentbtn1 btn btn-primary" data-rel="button" >
+         
+                {!! date("d M",strtotime("tomorrow")) !!}
+               
+             </button>  
+             <script>
+                $(".commentbtn1").on("click", function(e) {
+               e.preventDefault(); // in some browsers a button submits if no type=
+                $("div.commenttom").show();
+                $("div.commenttod,div.commenttomnext").hide();
+              
+ });
+                 </script>
+            <button class="commentbtn2 btn btn-primary" data-rel="button" >
+                {!! date("d M",strtotime("+2 days")) !!}
+            </button>  
+            <script>
+                $(".commentbtn2").on("click", function(e) {
+               e.preventDefault(); // in some browsers a button submits if no type=
+                $("div.commenttomnext").show();
+                $("div.commenttom,div.commenttod").hide();
+              
+ });
+                 </script>
                     <hr>
-                    <div class="map-container">
-                            <div class="inner-basic division-map div-toggle" data-target=".division-details" id="divisiondetail">
-                              <button class="map-point-sm" data-show=".darwin">
-                                <div class="content">
-                                  <div class="centered-y">
-                                  <p>hello</p>
-                                  </div>
-                                </div>
-                              </button>
-                              <button class="map-point-sm" data-show=".ptown">
-                                <div class="content">
-                                  <div class="centered-y">
-                                    <p>tommorow</p>
-                                  </div>
-                                </div>
-                              </button>
-                              <button class="map-point-sm" data-show=".philly">
-                                <div class="content">
-                                  <div class="centered-y">
-                                    <p>23 march</p>
-                                  </div>
-                                </div>
-                              </button>
-                             
-                            </div><!-- end inner basic -->
-                          </div>
-                          
-                          
-                          <div class="map-container">
-                            <div class="inner-basic division-details">
-                              <div class="initialmsg">
-                                <p>Choose button above</p>
-                              </div>
-                              <div class="darwin hide">
-                                <p> Hi</p>
+                  
+                    <div id="createcomment" class="commenttod" data-theme="a" style="display:none; margin-top:50px;" >
+                        @foreach($shows as $key=>$sh)
+                        <div class="time" style="">
+        
+                        <a href="{{url('/chooseseat',$sh->show_id)}}/{{$movies->mov_id}}">{{ $sh->show_time}}</p>
+                        </div>
+                        @endforeach
+                         </div>
+
                          
-                              </div>
-                              <div class="ptown hide">
-                                <p>Ptown Content here</p>
-                              </div>
-                              <div class="philly hide">
-                                <p>Philly Content here</p>
-                              </div>
-                            
-                            </div>
-                          </div>
-                    
-                         <style>
-                             .hide {
-                              display: none;
-                              }
-                          .map-container {
-                        text-align: center;
-                          }
-                             </style>
-                         <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript">
-                         </script>
-                          <script src="script.js"></script>
-                        <script>
-                            $(document).on('click', '.map-point-sm', function() {
-                             var show = $(this).data('show');
-                            $(show).removeClass("hide").siblings().addClass("hide");
-});
-                        </script>        
+                    <div id="createcomment" class="commenttom" data-theme="a" style="display:none; margin-top:50px;" >
+                      <p>hi</p>
+                         </div>
                 
-                @foreach($shows as $key=>$sh)
-                                        <div class="time" style=" border:1px solid red;float:left;margin-left:20px;border-radius:2em">
-                      
-                                        <a href="{{url('/seat',$sh->show_id)}}/{{$movies->mov_id}}">{{ $sh->show_time}}</p>
-                                        </div>
-                                        @endforeach
+                         <div id="createcomment" class="commenttomnext" data-theme="a" style="display:none; margin-top:50px;" >
+                            <p>hello</p>
+                               </div>
  </div>
 
 @endsection

@@ -2,7 +2,7 @@
 @section('title')seat @endsection
 
 @section('content')
-<form class="well form-horizontal" action="{!! url('/seat') !!}" method="POST" enctype="multipart/form-data" id="chseat">
+<form class="well form-horizontal" action="{!! url('/chooseseat') !!}" method="POST" enctype="multipart/form-data" id="chseat">
     @csrf
   
 <input type="text" name="show_id" value="{{request()->route('id')}}" hidden/>
@@ -16,9 +16,9 @@
 <div class="seatinfo" style="margin-left:80px; margin-top:-10px;">
     
        
-        @foreach($hall as  $ha)
+        @foreach($sc as  $scr)
                                             
-        <input value="{{$ha->screen_type }}" name="screentype"/>
+        <input value="{{$scr->screen_type }}" name="screentype"/>
         @endforeach
        
     

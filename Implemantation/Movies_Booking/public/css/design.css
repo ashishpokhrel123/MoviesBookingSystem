@@ -311,7 +311,13 @@
        
 
    }
-
+.time
+{
+    border:1px solid red;
+    float:left;
+    margin-left:20px;
+    border:2em
+}
 /* for mobile device and tablet*/
 @media only screen AND (MAX-WIDTH:500px)
 {

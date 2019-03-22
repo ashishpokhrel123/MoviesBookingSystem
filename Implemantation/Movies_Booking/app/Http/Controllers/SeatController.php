@@ -29,6 +29,6 @@ class SeatController extends Controller
         $book->book_seats=$request->seats;
         $book->totprice	=$request->totprice;
         $book->save();
-        return redirect()->to('/seat')->with('success','SeatBooking Is confirm');
+        return redirect()->to('/home')->with('success','SeatBooking Is confirm');
     }
 }

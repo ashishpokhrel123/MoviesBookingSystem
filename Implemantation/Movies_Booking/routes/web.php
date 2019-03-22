@@ -42,11 +42,12 @@ Route::group(['middleware'=>'admin'],function(){
   Route::get('/editprofile/{id}', 'ProfileController@profile');//display
   Route::put('/editprofile/{id}','ProfileController@profileupdate');//update
   Route::get('/addmovis','AdminController@addmovie');
-
+Route::get('/myticket','TicketController@create');
 //Route::get('/showtime/{id}','MovieController@showtime');
    Route::get('/showtime/{id}','ShowController@showtime');
-    Route::get('/seat/{id}/{mov_id}','HallController@seat');
+    Route::get('/chooseseat/{id}/{mov_id}','HallController@seat');
 //Route::get('/seat','ShowController@search');
-  Route::get('/seat','ShowController@readRate');
-  Route::post('/seat','SeatController@store');
+  Route::get('/chooseseat','ShowController@readRate');
+  Route::post('/chooseseat','SeatController@store');
+  
 
