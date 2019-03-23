@@ -53,7 +53,7 @@
 
                   
                     <td style="float:left;">
-                        <a href="{!! url('/editmovie',$movies->mov_id) !!}" type="button" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="{!! url('/editmovies',$movies->mov_id) !!}" type="button" class="btn btn-primary btn-sm">Edit</a>
                         <form action="{!! url('deletemovie',[$movies->id]) !!}" method="POST">
                             @csrf
                             {!! method_field('DELETE') !!}

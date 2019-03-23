@@ -30,31 +30,37 @@
             </tr>
             </thead>
             <tbody>
-
+                @if($book->count())
+                @foreach($book as $key=>$books)
            
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                    <td>{!! $books->book_id!!}</td>
+                        <td>{!! $books->mov_title!!}</td>
+                        <td>{!! $books->show_date!!}</td>
                         <td>
-                         
+                            {!! $books->show_time!!}
                         </td>
 
-                        <td></td>
-                        <td></td>
+                        <td>{!! $books->book_seats!!}</td>
+                        <td>{!! $books->totprice!!}</td>
 
 
                         <td>
                                 <form action="{!! url('') !!}" method="POST">
                                         @csrf
-                                <a href="" type="button" class="btn btn-success btn-sm">View Ticket</a>
+                                <a href="{!! url('ticket',$books->book_id) !!}" type="button" class="btn btn-success btn-sm">View Ticket</a>
                             
                                 {!! method_field('DELETE') !!}
                                 <a href="" type="button" class="btn btn-danger btn-sm" style="margin-left:5px;">Cancel Booking</a>
                             </form>
                         </td>
                     </tr>
-       
+                    @endforeach
+                    @else
+                        <tr>
+                            <td colspan="7"> <p style="color:red">No Movie Book yet</p></td>
+                        </tr>
+                    @endif
           
             </tbody>
         </table>

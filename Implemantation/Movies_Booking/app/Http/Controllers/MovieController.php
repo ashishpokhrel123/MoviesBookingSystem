@@ -165,15 +165,21 @@ class MovieController extends Controller
     }
     public function edit($id)
     {
-        $movie=Movie::find($id);
-        if(!$movie)
-        {
-            return indirect()->back();
-        }
-
-        return view('admin.editmovie',[
-            'movies'=>$movie
-        ]);
+       /* $me = DB::table('movies')
+        ->select('movies.*')
+        ->where('movies.mov_id',$id)
+        ->get();
+        // if (!$ground) {
+        //     return redirect()->back();
+        // }
+        // return view('admins.editGround', [
+        //     'ground' => $ground
+        // ]);*/
+        return view('admin.editmovies')/*->with('me',$me)*/;
+     /*  echo "<pre>";
+       print_r($me);
+       exit();*/
+         
     }
 
     /**
@@ -185,7 +191,7 @@ class MovieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return ("hello");
     }
 
     /**

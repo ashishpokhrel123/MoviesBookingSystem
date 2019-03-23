@@ -65,7 +65,12 @@
 
                          
                     <div id="createcomment" class="commenttom" data-theme="a" style="display:none; margin-top:50px;" >
-                      <p>hi</p>
+                        @foreach($shows as $key=>$sh)
+                        <div class="time" style="">
+        
+                        <a href="{{url('/chooseseat',$sh->show_id)}}/{{$movies->mov_id}}">{{ $sh->show_time}}</p>
+                        </div>
+                        @endforeach
                          </div>
                 
                          <div id="createcomment" class="commenttomnext" data-theme="a" style="display:none; margin-top:50px;" >
