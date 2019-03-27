@@ -12,7 +12,10 @@ use Illuminate\Http\Request;
 
 class SeatController extends Controller
 {
-   
+    public function readbookseat()
+    {
+        
+    }
     public function store(Request $request)
     {
         $this->validate(request(),[

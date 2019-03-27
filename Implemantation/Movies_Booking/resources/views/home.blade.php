@@ -8,55 +8,36 @@
             {{{ session()->get('success') }}}
         </div>
         @endif
-    <div class="container-fluid">
-        
-            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img class="d-block w-100" src="{{url('images/first.jpg')}}" alt="First slide" style="height:300px;">
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="{{url('images/second.jpg')}}" alt="Second slide" style="height:300px;">
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="{{url('images/third.jpg')}}" alt="Third slide" style="height:300px;">
-                  </div>
-                </div>
-              </div>
-              <div class="clearfix"></div>
-            <div class="row" style="margin:20px;padding:15px;">  <h1>Now Showing</h1>   <h1>Upcomming Movies</h1><hr></div>
+    <div class="container-fluid">      
+        <div class="clearfix"></div>
+        <h1>Now Showing</h1><hr>
  
-           @foreach($movie as $movies)
-           
-           <div class="movies">
-            
-               
-                  @if($movies->image)
-                  <img src="{!! asset('uploads/movies/'.$movies->image) !!}" class="img-fluid img-thumbnail" id="movies_image"
-                  style="height:300px;width:300px;">
-                  @else
-                  <span class="badge badge-danger">  No Image Found </span>
-                  
-              @endif
-              
-              <div class="overlay">
+
+        <div class="container">
+            <div class="row">
+                    @foreach($movie as $movies)
+                <div class="col-md-4">
+                    <div class="movies">
+                        @if($movies->image)
+                            <img src="{!! asset('uploads/movies/'.$movies->image) !!}" class="img-fluid img-thumbnail" id="movies_image"
+                            style="height:300px;width:300px;">
                     
+                            <div class="bottomright"><a href="{{url('/showtime',$movies->mov_id)}}"><img src="{{url('images/ticket.png')}}" alt="logo" style="height:50px;width:50px;margin-top:10px;"></a></div>                
+                        @else
+                            <span class="badge badge-danger">  No Image Found </span>
+                        @endif 
+                        <div class="overlay">
+                                    
+                        </div>
+                        <div class="button"><a href="{{url('/moviedetail',$movies->mov_id)}}">{{ __('Details') }}</a></div>       
+                        <div class="title">
+                            {{$movies->mov_title}}
+                        </div>  
+                    </div> 
                 </div>
-                <div class="button"><a href="{{url('/moviedetail',$movies->mov_id)}}">{{ __('Details') }}</a></div>
-                <div class="title">
-                   {{$movies->mov_title}}
-                </div>
-                <div class="Button">
-                <a href="{{url('/showtime',$movies->mov_id)}}">{{__('Book')}}</a></div>
-                </div>
-                
-            
-          </div>
-       @endforeach
-     
-
-      
+                @endforeach   
+            </div>
         </div>
-   
-
+             
+    </div>
 @endsection

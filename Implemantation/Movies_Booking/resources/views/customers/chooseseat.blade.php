@@ -16,18 +16,19 @@
 <div class="seatinfo" style="margin-left:80px; margin-top:-10px;">
     
        
-        @foreach($sc as  $scr)
+        @foreach($hall as  $scr)
                                             
         <input value="{{$scr->screen_type }}" name="screentype"/>
         @endforeach
        
-    
-        
+        @foreach($book as  $bks)
+<input  type="text" name="seats" id="selectbokseat" value="{{$bks->book_seats}}" style="height:40px;width:200px;margin-left:20px;" >
+        @endforeach
      
         
     <p> No of Seat:  <input type="text" id="totseat" name="totseat" value="0" style="height:30px;width:70px;"></input></p>
     <p style="margin-left:300px;margin-top:-40px;">Total price:  <input type="text" name="totprice" id="totprice" value="0" style="height:30px;width:70px;"></input></p>
-    <p style="margin-left:500px;margin-top:-60px;">Selected Seat:<textarea name="seats" id="selectseat" style="height:40px;width:200px;margin-left:20px;"></textarea>
+    <p style="margin-left:500px;margin-top:-60px;">Selected Seat:<textarea name="seats" id="selectseat" style="height:40px;width:200px;margin-left:20px;" hidden></textarea>
     <button id='btn' class="btn btn-primary"value="Refresh Page" onClick="window.location.reload()">Reset Seat</button>
 
     
@@ -43,15 +44,15 @@
   
           <ul  id="place">
               
-<script>
+
         //validation username  using Jquery
-        <script src="https://code.jquery.com/jquery-1.10.2.js"></script> 
+        
         
         
  
 
 
-                    </script>
+               
           
   
   
@@ -75,8 +76,9 @@
           </div>
           <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript">
           </script>
-           <script src="script.js"></script>
-           <script>
+        
+         
+               <script type="text/javascript">
           var settings = {
                  rows: 15,
                  cols: 10,
@@ -106,56 +108,59 @@
                       }
                   }
                   $('#place').html(str.join(''));
+                  
+
+                
               };
+             /* getting booked seat*/
+                  var bk=[];
+                     boxvalue = document.getElementById('selectbokseat').value;
+               
+                  
+                     bk.push(boxvalue);
+                     var book=JSON.parse("[" + bk + "]");
+                     var bookedSeats=book;
+                     // var bookedSeats=[1,2,4,143,144];
+
+                       /*booked seat change color into red*/
+                            init(bookedSeats);
+                            $('.' + settings.seatCss).click(function( event )  {
+                            if ($(this).hasClass(settings.selectedSeatCss)){
+                                event.stopImmediatePropagation();
+                           alert('This seat is already reserved');
+                           }
+                          else{
+                          $(this).toggleClass(settings.selectingSeatCss);
   
+                           
+                        }
+                          });
+                       /*counting totseat and totprice of select seat*/  
   
-  
-              //case I: Show from starting
-              //init();
-  
-              //Case II: If already booked
-              var bookedSeats;
-              init(bookedSeats);
-              $('.' + settings.seatCss).click(function () {
-  if ($(this).hasClass(settings.selectedSeatCss)){
-      alert('This seat is already reserved');
-  }
-  
-  
-  else{
-      $(this).toggleClass(settings.selectingSeatCss);
- 
-      }
-  });
-  
-  var count = 0;
-  var countEl = document.getElementById("totseat");
-  var price= document.getElementById("totprice");
+                           var count = 0;
+                           var countEl = document.getElementById("totseat");
+                           var price= document.getElementById("totprice");
 
 
-/* for selection seat on single click*/
+                    /* for selection seat on single click*/
 
-$("#place .seat").one( "click", function( event ) {
-   
-        count++
-    countEl.value=count;
-    price.value=count*300;
-    $(this).css("background-color","yellow");	
-    
- 		      
-  });
+                           $("#place .seat").one( "click", function( event ) {
+                           count++
+                           countEl.value=count;
+                           price.value=count*300;
+                           $(this).css("background-color","yellow");       	      
+                          });
 
-
-    $("#place .seat").dblclick( "click", function( event ) {
-
-var count2 = document.getElementById("totseat");
-var countEl = document.getElementById("totseat");
-var price= document.getElementById("totprice");
-  count--
-  countEl.value=count;
- price.value=count*300;
-$(this).css("background-color","");
-});
+                    /*deselect seat on dblclick*/
+                          $("#place .seat").dblclick( "click", function( event ) {
+                            var count2 = document.getElementById("totseat");
+                            var countEl = document.getElementById("totseat");
+                            var price= document.getElementById("totprice");
+                            count--
+                            countEl.value=count;
+                             price.value=count*300;
+                           $(this).css("background-color","");
+                           });
 
 
   
@@ -188,6 +193,7 @@ $(this).css("background-color","");
       $( "#selectseat" ).html( str.join(',') );
     
   });
+
  
  
 

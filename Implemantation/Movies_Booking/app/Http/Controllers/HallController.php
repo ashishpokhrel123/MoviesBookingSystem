@@ -19,12 +19,22 @@ class HallController extends Controller
         $hall="";   
         if(Auth::check())
         {
+            $user=Auth::user()->id;
             $hall=DB::table('hall')
+          
             ->join('screen', 'screen.screen_id', '=','hall.screen_id')   //*join query*/
             ->select('screen.screen_type')
            ->where('hall.show_id',$id)
            ->get();
-            return view('customers.chooseseat')->with('sc', $hall);
+
+           $book=DB::table('booking')
+        ->select('booking.book_seats')
+        ->where('booking.screen','Audi1')
+        ->get()
+        ->toarray();
+       
+        return view('customers.chooseseat', compact(['book', 'hall']));
+           
         }
       
         else

@@ -52,5 +52,6 @@ Route::get('/myticket','TicketController@showbook');
   Route::get('/chooseseat','ShowController@readRate');
   Route::post('/chooseseat','SeatController@store');
   Route::get('ticket/{id}','TicketController@print');
+  Route::get('/chooseseat','SeatController@readbookseat');
   
 
