@@ -16,6 +16,12 @@
     <!-- Scripts -->
     <script  type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     <script  type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
  
 
 
@@ -108,7 +114,84 @@
         <main class="py-4">
             @yield('content')
         </main>
-        
+        <!-- Footer -->
+<footer class="footer">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-6 mt-md-0 mt-3">
+
+          <!-- Content -->
+          
+          <img src="{{url('images/logo.png')}}" alt="logo" style="margin-top:-80px;">
+          <p>Here you can use rows and columns here to organize your footer content.</p>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none pb-3">
+
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+
+            <!-- Links -->
+            <h5 class="text-uppercase">Links</h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <a href="#!">Link 1</a>
+              </li>
+              <li>
+                <a href="#!">Link 2</a>
+              </li>
+              <li>
+                <a href="#!">Link 3</a>
+              </li>
+              <li>
+                <a href="#!">Link 4</a>
+              </li>
+            </ul>
+
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 mb-md-0 mb-3">
+
+            <!-- Links -->
+            <h5 class="text-uppercase">Contact Us</h5>
+
+             <ul class="contact" id="contactus">
+                 <a href="" ><i class="fa fa-map-marker" style="color: black"></i> <span>Dillibazar,Kathmandu,Nepal</span></a><br/>
+                    <a href="" ><i class="fa fa-phone" style="color: black"></i> <span> 01-4441163, 01-4441167, 01-4441168</span></a><br/>
+                        <a href="" ><i class="fa fa-envelope-o" style="color: black"></i><span> info@citymovies.email.com</span></a><br/>
+             
+              
+            
+          </ul>
+
+          </div>
+          <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+      <a href="/home"> citymovies.com</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
     </div>
    
 </body>

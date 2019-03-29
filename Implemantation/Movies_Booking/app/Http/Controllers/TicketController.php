@@ -8,6 +8,7 @@ use App\Booking;
 use DB;
 use App\Show;
 use App\Movie;
+use App\Hall;
 
 class TicketController extends Controller
 {
@@ -53,6 +54,44 @@ class TicketController extends Controller
           print_r($book);
           exit();*/
     }
-       
-    
+      public function edit($id,$time) 
+      {
+        $book=DB::table('booking')
+        ->join('shows','shows.show_id','=','booking.mov_id')
+        ->select('booking.*')
+        ->where('shows.show_time',$time)
+       ->get();
+      
+
+         return view('customers.editbooking', compact(['book']));
+      }
+      public function update(Request $request, $id)
+      {
+        $this->validate(request(),[
+            'totseat'=>'required',
+            'totprice'=>'required',
+            'seats'=>'required',
+        ]);
+        $book = Booking::find($id);
+        $book=new Booking();
+        $book->user_id=$request->user_id;
+        $book->mov_id=$request->mov_id;
+        $book->show_id=$request->show_id;
+        $book->screen=$request->screentype;
+        $book->book_seats=$request->seats;
+        $book->totprice	=$request->totprice;
+        $book->save();
+        return redirect()->to('/myticket')->with('success','SeatBooking Is Updated');
+      }
+      public function destroy($id)
+      {
+          $book=Booking::find($id);
+  
+        
+             
+             $book= DB::table('booking')->where('book_id',$id)->delete(); 
+              return redirect()->to('/myticket')->withSuccess('Booking Deleted Succefully');
+  
+  
+      }
 }

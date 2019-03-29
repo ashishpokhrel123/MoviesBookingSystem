@@ -4,18 +4,14 @@
 @section('content')
 <div class="container">
         <h2>My Ticket</h2>
-
-        @if(session()->has('success'))
-            <div class="alert alert-success">
-                {{{ session()->get('success') }}}
-            </div>
-        @endif
-
-
-
-        <a href="{!! url('') !!}" type="button" class="btn btn-info btn-sm float-right mb-2"> </a>
-        <table class="table table-bordered">
-            <thead>
+             @if(session()->has('success'))
+               <div class="alert alert-success">
+                  {{{ session()->get('success') }}}
+               </div>
+          @endif
+             <a href="{!! url('') !!}" type="button" class="btn btn-info btn-sm float-right mb-2"> </a>
+               <table class="table table-bordered">
+               <thead>
             <tr>
                 <th>SN.</th>
                 <th>Movie name</th>
@@ -23,9 +19,6 @@
                 <th>Showtime</th>
                 <th>Total seat</th>
                 <th>Total price</th>
-
-
-
                 <th>Action</th>
             </tr>
             </thead>
@@ -46,12 +39,14 @@
 
 
                         <td>
-                                <form action="{!! url('') !!}" method="POST">
+                                
                                         @csrf
-                                <a href="{!! url('ticket',$books->book_id) !!}" type="button" class="btn btn-success btn-sm">View Ticket</a>
+                                <a href="{{url('ticket',$books->book_id)}}" type="button" class="btn btn-success btn-sm">View Ticket</a>
+                                <a href="{{url('editbooking',$books->book_id)}}/{{$books->show_time}}" type="button" class="btn btn-primary btn-sm">Edit Booking</a>
+                                <form action="{!! url('deletebooking/{{id}}') !!}" method="POST">
                             
                                 {!! method_field('DELETE') !!}
-                                <a href="" type="button" class="btn btn-danger btn-sm" style="margin-left:5px;">Cancel Booking</a>
+                                <a href="{!! url('deletebooking',$books->book_id) !!}" type="button" class="btn btn-danger btn-sm" style="margin-left:5px;">Cancel Booking</a>
                             </form>
                         </td>
                     </tr>

@@ -158,28 +158,17 @@ class MovieController extends Controller
     public function viewmovie()
     {
         $movie=new Movie();
-        $movie=$movie->get();
+        $movie = $movie->get();
         return view('admin.viewmovie',[
             'movie'=>$movie
         ]);
     }
     public function edit($id)
     {
-       /* $me = DB::table('movies')
-        ->select('movies.*')
-        ->where('movies.mov_id',$id)
-        ->get();
-        // if (!$ground) {
-        //     return redirect()->back();
-        // }
-        // return view('admins.editGround', [
-        //     'ground' => $ground
-        // ]);*/
-        return view('admin.editmovies')/*->with('me',$me)*/;
-     /*  echo "<pre>";
-       print_r($me);
-       exit();*/
-         
+        $movie=Movie::find($id);
+        return view('admin.editmovies',[
+            'movie'=>$movie
+        ]);
     }
 
     /**
@@ -191,7 +180,40 @@ class MovieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return ("hello");
+        $this->validate(request(),[
+            'movies_title'=>'required|max:150',
+            'movies_director'=>'required|max:150',
+            'movies_cast'=>'required|max:150',
+            'movies_type'=>'required',
+            'movies_lang'=>'required',
+            'movies_realase'=>'required',
+            'movies_duration'=>'required|max:200',
+            'movies_poster'=>'nullable',
+            'movies_url'=>'nullable|max:300',
+            'descrption'=>'required|max:5000',
+           
+      ]);
+      $movie = Movie::find($id);
+      if ($request->hasFile('movies_poster')) {
+        if ($movie->image && app('files')->exists($this->image_dir . '/' . $movie->image)) {
+            app('files')->delete($this->image_dir . '/' . $movie->image);
+        }
+        $file_name = $this->uploadFile($request->file('movies_poster'), $this->image_dir);
+        $movie->image = $file_name;
+    }
+    $movie->mov_title=$request->movies_title;
+    $movie->mov_director=$request->movies_director;
+    $movie->mov_cast=$request->movies_cast;
+    $movie->mov_type=implode(',',$request->movies_type);
+    $movie->mov_lang=$request->movies_lang;
+    $movie->mov_realsedate=$request->movies_realase;
+    $movie->mov_duration=$request->movies_duration;
+  // $movie->image=$image_dir->$file_name;d
+    $movie->mov_url=$request->movies_url;
+    $movie->mov_description=$request->descrption;
+    $movie->save();
+    return redirect()->to('/viewmovie')->with('success', 'Movie Updated  Succesfully');
+
     }
 
     /**

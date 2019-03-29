@@ -33,7 +33,7 @@ class LoginController extends Controller
         $role = Auth::user()->usertype; 
         
         // Check user role
-        switch ($role) {
+        /*switch ($role) {
             case '0':
                     return '/home';
                 break;
@@ -41,8 +41,16 @@ class LoginController extends Controller
                     return '/adminDashboard';
                 break; 
             default:
-                    return 'welcome'; 
+                    return '/login'; 
                 break;
+        }*/
+        if($role==1)
+        {
+            return '/adminDashboard';
+
+        }
+        else{
+            return '/home';
         }
     }
 

@@ -5,12 +5,12 @@
 
 <div class="container-fluid" style="background-color:aliceblue;">
     <!-- Error message display!-->
-  @if($errors->any())
-  <div class="alert alert-danger">
-      <ul class="list-unstyled">
-      @foreach($errors->all() as $error)
-      <li>{{ $error}}</li>
-      @endforeach
+    @if($errors->any())
+     <div class="alert alert-danger">
+        <ul class="list-unstyled">
+          @foreach($errors->all() as $error)
+          <li>{{ $error}}</li>
+         @endforeach
       </ul>
   </div>
   @endif

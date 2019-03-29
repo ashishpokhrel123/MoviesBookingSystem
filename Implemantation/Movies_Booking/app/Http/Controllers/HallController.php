@@ -29,7 +29,8 @@ class HallController extends Controller
 
            $book=DB::table('booking')
         ->select('booking.book_seats')
-        ->where('booking.screen','Audi1')
+        ->where('booking.show_id',$id)
+     
         ->get()
         ->toarray();
        

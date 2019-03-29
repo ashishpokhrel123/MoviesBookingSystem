@@ -16,7 +16,7 @@
                     @endif
                 </ul>
             </li>
-          <div class="st" style="margin:80px">
+          <div class="st" style="margin:80px"><br/>
             <hr>
             <button class="commentbtn btn btn-primary" data-rel="button" >{!! date("d M")!!}</button>  
            
@@ -42,7 +42,7 @@
  });
                  </script>
             <button class="commentbtn2 btn btn-primary" data-rel="button" >
-                {!! date("d M",strtotime("+2 days")) !!}
+                {!! date("l,d M",strtotime("+2 days")) !!}
             </button>  
             <script>
                 $(".commentbtn2").on("click", function(e) {

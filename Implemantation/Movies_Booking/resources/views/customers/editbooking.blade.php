@@ -2,24 +2,26 @@
 @section('title')seat @endsection
 
 @section('content')
-<form class="well form-horizontal" action="{!! url('/chooseseat') !!}" method="POST" enctype="multipart/form-data" id="chseat">
+<form class="well form-horizontal" action="{!! url('editbooking/{{id}}') !!}" method="POST" enctype="multipart/form-data" id="chseat">
     @csrf
+    {!! method_field('put')!!}
   
-<input type="text" name="show_id" value="{{request()->route('id')}}" hidden/>
-<input type="text" name="user_id" value="{!!(Auth::user()->id)!!}" hidden/>
-<input type="text" name="mov_id" value="{{request()->route('mov_id')}}" hidden/>
+
+    <input type="text" name="user_id" value="{!!(Auth::user()->id)!!}" hidden/>
+
     
 
 
 
 <div class="seat">
     <div class="seatinfo" style="margin-left:80px; margin-top:-10px;">
-               @foreach($hall as  $scr)
-                 <input value="{{$scr->screen_type }}" name="screentype"/>
-               @endforeach
+               
              
               @foreach($book as $bks)
+                 
                   <input  type="text" name="seats" id="selectbokseat" value="{{$bks->book_seats}}" style="height:40px;width:200px;margin-left:20px;" >
+                  <input type="text" name="mov_id" value="{{$bks->mov_id}}" hidden/>
+                  <input type="text" name="show_id" value="{{$bks->show_id}}" hidden/>
              @endforeach
             
      
@@ -105,8 +107,7 @@
                             init(bookedSeats);
                             $('.' + settings.seatCss).click(function( event )  {
                             if ($(this).hasClass(settings.selectedSeatCss)){
-                                event.stopImmediatePropagation();
-                            alert('This seat is already reserved');
+                                $(this).css("background-color","yellow");      
                             }
                            else{
                            $(this).toggleClass(settings.selectingSeatCss);

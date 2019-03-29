@@ -29,6 +29,7 @@
         </tr>
         </thead>
         <tbody>
+            
 
         @if($movie->count())
             @foreach($movie as $key=>$movies)
