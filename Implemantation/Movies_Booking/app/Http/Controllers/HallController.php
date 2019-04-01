@@ -31,8 +31,9 @@ class HallController extends Controller
         ->select('booking.book_seats')
         ->where('booking.show_id',$id)
      
-        ->get()
-        ->toarray();
+        ->get();
+     
+      
        
         return view('customers.chooseseat', compact(['book', 'hall']));
            

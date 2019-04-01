@@ -19,7 +19,7 @@
                @endforeach
              
               @foreach($book as $bks)
-                  <input  type="text" name="seats" id="selectbokseat" value="{{$bks->book_seats}}" style="height:40px;width:200px;margin-left:20px;" >
+                  <input  type="text" name="seats" id="selectbokseat" value="{{$bks->book_seats}}" style="height:40px;width:200px;margin-left:20px;"  hidden>
              @endforeach
             
      

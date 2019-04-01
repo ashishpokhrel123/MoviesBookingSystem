@@ -55,6 +55,6 @@ Route::get('/myticket','TicketController@showbook');
   Route::get('editbooking/{id}/{time}','TicketController@edit');
   Route::put('editbooking/{id}','TicketController@update');
   Route::get('/chooseseat','SeatController@readbookseat');
-  Route::delete('deletebooking/{id}','Controller@destroy');//delete
+  Route::delete('/myticket/{id}','TicketController@destroy');//delete
   
 

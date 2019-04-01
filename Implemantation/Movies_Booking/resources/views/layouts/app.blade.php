@@ -16,22 +16,18 @@
     <!-- Scripts -->
     <script  type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     <script  type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
- 
 
 
 
-   
+
+
+
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-   
+
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 
     <!-- Styles -->
@@ -61,7 +57,7 @@
                                 <li class="nav-item">
                                         <a class="nav-link" href="/myticket">{{ __('MyTicket') }}</a>
                                     </li>
-                                                
+
 
                 </ul>
 
@@ -73,7 +69,7 @@
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
-                            
+
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
@@ -83,7 +79,7 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                    Welcome, {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
-                             
+
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{url('/editprofile',Auth::user()->id)}}">
                                          {{ __('Profile') }}
@@ -91,20 +87,20 @@
                                     <a class="dropdown-item" href="">
                                         {{ __('Change Profile Details') }}
                                     </a>
-                                      
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                 
+
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </div>
                             </li>
-                            
+
                         @endguest
                     </ul>
                 </div>
@@ -127,7 +123,7 @@
         <div class="col-md-6 mt-md-0 mt-3">
 
           <!-- Content -->
-          
+
           <img src="{{url('images/logo.png')}}" alt="logo" style="margin-top:-80px;">
           <p>Here you can use rows and columns here to organize your footer content.</p>
 
@@ -170,9 +166,9 @@
                  <a href="" ><i class="fa fa-map-marker" style="color: black"></i> <span>Dillibazar,Kathmandu,Nepal</span></a><br/>
                     <a href="" ><i class="fa fa-phone" style="color: black"></i> <span> 01-4441163, 01-4441167, 01-4441168</span></a><br/>
                         <a href="" ><i class="fa fa-envelope-o" style="color: black"></i><span> info@citymovies.email.com</span></a><br/>
-             
-              
-            
+
+
+
           </ul>
 
           </div>
@@ -193,6 +189,6 @@
   </footer>
   <!-- Footer -->
     </div>
-   
+
 </body>
 </html>

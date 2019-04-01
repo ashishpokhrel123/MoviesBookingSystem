@@ -40,14 +40,14 @@
 
                         <td>
                                 
-                                        @csrf
+                          
                                 <a href="{{url('ticket',$books->book_id)}}" type="button" class="btn btn-success btn-sm">View Ticket</a>
                                 <a href="{{url('editbooking',$books->book_id)}}/{{$books->show_time}}" type="button" class="btn btn-primary btn-sm">Edit Booking</a>
-                                <form action="{!! url('deletebooking/{{id}}') !!}" method="POST">
-                            
-                                {!! method_field('DELETE') !!}
-                                <a href="{!! url('deletebooking',$books->book_id) !!}" type="button" class="btn btn-danger btn-sm" style="margin-left:5px;">Cancel Booking</a>
-                            </form>
+                                <form action="{!!url('/myticket',$books->book_id)!!}" method="POST">
+                                    @csrf
+                                    {!! method_field('DELETE') !!}
+                                    <button type="submit" class="btn btn-danger btn-sm"> Delete</button>
+                                </form>
                         </td>
                     </tr>
                     @endforeach

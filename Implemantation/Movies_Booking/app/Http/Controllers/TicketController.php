@@ -85,12 +85,11 @@ class TicketController extends Controller
       }
       public function destroy($id)
       {
-          $book=Booking::find($id);
-  
-        
-             
-             $book= DB::table('booking')->where('book_id',$id)->delete(); 
-              return redirect()->to('/myticket')->withSuccess('Booking Deleted Succefully');
+        $book=Booking::find($id);
+
+      
+            $book->delete();
+            return redirect()->to('/myticket')->with('success','Ticket Deleted Succefully');
   
   
       }

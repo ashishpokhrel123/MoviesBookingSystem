@@ -123,9 +123,6 @@ class MovieController extends Controller
          $movie->mov_title=$request->movies_title;
          $movie->mov_director=$request->movies_director;
          $movie->mov_cast=$request->movies_cast;
-
-
-
          $movie->mov_type=implode(',',$request->movies_type);
          $movie->mov_lang=$request->movies_lang;
          $movie->mov_realsedate=$request->movies_realase;
@@ -200,7 +197,8 @@ class MovieController extends Controller
         }
         $file_name = $this->uploadFile($request->file('movies_poster'), $this->image_dir);
         $movie->image = $file_name;
-    }
+      }
+
     $movie->mov_title=$request->movies_title;
     $movie->mov_director=$request->movies_director;
     $movie->mov_cast=$request->movies_cast;
