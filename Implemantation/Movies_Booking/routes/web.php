@@ -25,13 +25,14 @@ Route::group(['middleware'=>'admin'],function(){
     Route::get('/viewmovie','MovieController@viewmovie');
     Route::get('/editmovies/{id}','MovieController@edit');
     Route::put('/editmovies/{id}','MovieController@update');
+    Route::delete('/deletemovie/{id}','MovieController@destroy');
     Route::get('/addscreen','ScreenController@create');
     Route::post('/addscreen','ScreenController@store');
     Route::get('/addhall','HallController@create');
     Route::get('/addhall','ScreenController@show');
-  
+
     Route::post('/addhall','HallController@store');
-   
+
     ///Route::post('/addshow','ShowController@store');
 });
 //Route::get('/home','ShowController@index');
@@ -56,5 +57,3 @@ Route::get('/myticket','TicketController@showbook');
   Route::put('editbooking/{id}','TicketController@update');
   Route::get('/chooseseat','SeatController@readbookseat');
   Route::delete('/myticket/{id}','TicketController@destroy');//delete
-  
-

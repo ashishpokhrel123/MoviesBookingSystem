@@ -10,8 +10,10 @@ use App\Show;
 use App\Movie;
 use App\Hall;
 
+
 class TicketController extends Controller
 {
+          
     public function create()
     { 
            if(Auth::check())
@@ -26,12 +28,13 @@ class TicketController extends Controller
     }
     public function showbook()
     {
-        $user=Auth::user()->id;
+       $user=Auth::user()->id;
         $book=DB::table('booking')
         ->join('movies','movies.mov_id','=','booking.mov_id')
         ->join('shows','shows.show_id','=','booking.show_id')
         ->select('movies.mov_title','shows.show_date','shows.show_time','booking.book_seats','booking.totprice','booking.book_id')
         ->where('booking.user_id',$user)
+
         ->get();
 
           return view('customers.myticket', compact(['book']));
@@ -85,10 +88,10 @@ class TicketController extends Controller
       }
       public function destroy($id)
       {
-        $book=Booking::find($id);
-
-      
-            $book->delete();
+        $book=DB::table('booking')
+        ->select('booking.*')
+        ->where('booking.book_id',$id)
+        ->delete();
             return redirect()->to('/myticket')->with('success','Ticket Deleted Succefully');
   
   

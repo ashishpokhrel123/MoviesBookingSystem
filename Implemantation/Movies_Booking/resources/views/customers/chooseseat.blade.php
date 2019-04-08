@@ -19,7 +19,7 @@
                @endforeach
              
               @foreach($book as $bks)
-                  <input  type="text" name="seats" id="selectbokseat" value="{{$bks->book_seats}}" style="height:40px;width:200px;margin-left:20px;"  hidden>
+                  <input  type="text" name="seats" id="selectbokseat[]" value="{{$bks->book_seats}}" style="height:40px;width:200px;margin-left:20px;"  hidden>
              @endforeach
             
      
@@ -95,7 +95,7 @@
               };
              /* getting booked seat*/
                   var bk=[];
-                     boxvalue = document.getElementById('selectbokseat').value;
+                     boxvalue = document.getElementById('selectbokseat[]').value;
                      bk.push(boxvalue);
                      var book=JSON.parse("[" + bk + "]");
                      var bookedSeats=book;

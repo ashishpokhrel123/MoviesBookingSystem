@@ -27,14 +27,14 @@ class MovieController extends Controller
             'movie'=>$movie
         ]);
 
-        
-        
-         
+
+
+
     }
-   
 
 
-     
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -47,20 +47,20 @@ class MovieController extends Controller
         ->select('movies.*')
         ->where('mov_id', $id)
         ->get();
-        
+
          return view('customers.details',[
             'movie'=>$movie
          ]);
      }
-     
-     
+
+
      public function showmovies($id)
      {
         $movie=  DB::table('movies')
         ->select('movies.*')
         ->where('mov_id', $id)
         ->get();
-        
+
          return view('customers.showtime')->with('showmovies',$movie);
      }
      public function showtime($id)
@@ -71,14 +71,14 @@ class MovieController extends Controller
       ->select('shows.show_time')
         ->where('movies.mov_id',$id)
 
- 
+
         ->get();
-     
- 
+
+
       return view('customers.showtime')->with('shows',$shows);
-             
-         
-        
+
+
+
      }
     public function create()
     {
@@ -110,7 +110,7 @@ class MovieController extends Controller
             'movies_poster'=>'nullable',
             'movies_url'=>'nullable|max:300',
             'descrption'=>'required|max:1500',
-           
+
       ]);
       //inserting movies in database
          $movie=new Movie();
@@ -119,7 +119,7 @@ class MovieController extends Controller
           $movie->image=$file_name;
 
       }
-        
+
          $movie->mov_title=$request->movies_title;
          $movie->mov_director=$request->movies_director;
          $movie->mov_cast=$request->movies_cast;
@@ -132,7 +132,7 @@ class MovieController extends Controller
          $movie->mov_description=$request->descrption;
          $movie->save();
          return redirect()->to('/addmovie')->with('success', 'Movie added Succesfully');
-         
+
     }
 
     /**
@@ -188,7 +188,7 @@ class MovieController extends Controller
             'movies_poster'=>'nullable',
             'movies_url'=>'nullable|max:300',
             'descrption'=>'required|max:5000',
-           
+
       ]);
       $movie = Movie::find($id);
       if ($request->hasFile('movies_poster')) {
@@ -222,6 +222,6 @@ class MovieController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }

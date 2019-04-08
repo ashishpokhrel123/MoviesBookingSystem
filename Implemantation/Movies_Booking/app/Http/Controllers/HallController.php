@@ -36,7 +36,7 @@ class HallController extends Controller
       
        
         return view('customers.chooseseat', compact(['book', 'hall']));
-           
+       
         }
       
         else
